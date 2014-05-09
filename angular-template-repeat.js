@@ -63,7 +63,7 @@ function($templateCache, $cacheFactory, $compile) {
 
 				for (var i = 0, upper = collection.length; i < upper; i++) {
 					var data = collection[i];
-					var rowElem = cache.get(data.ruleId);
+					var rowElem = cache.get(data[attr.cacheKey]);
 					if (!rowElem) {
 						continue;
 					}
