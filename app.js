@@ -10,5 +10,5 @@ angular.module('template-repeat-demo', ['template-repeat'])
 		};
 		$scope.items.push(obj);
 	}
-		
+	console.log(JSON.stringify($scope.items));	
 }]);
