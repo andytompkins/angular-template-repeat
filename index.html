@@ -35,15 +35,12 @@
 					<th>Col3</th>
 				</tr>
 			  </thead>
-			  <tbody data-template-repeat="item in items" data-template="itemRow.html" data-cache-rows="items" data-cache-key="id">
+			  <tbody data-template-repeat="item in items" data-template="itemRow.html" data-cache-rows="allItems" data-cache-key="id">
 				  
 			  </tbody>
 		  </table>
       </section>
 	  
-	  <section>
-	  	{{items}}
-	  </section>
     
 	<script type="text/ng-template" id="itemRow.html">
 		<tr>
