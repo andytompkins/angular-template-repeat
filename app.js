@@ -1,8 +1,10 @@
 angular.module('template-repeat-demo', ['template-repeat'])
 .controller('DemoController', [ '$scope', function DemoController($scope) {
 	
-	$scope.numRows = 10;
-	
+	$scope.setRows = function(numRows) {
+		$scope.items = itemList.slice(0, numRows);
+	};
+		
 	var itemList = [];
 	
 	var numObjs = 2000;
@@ -13,5 +15,8 @@ angular.module('template-repeat-demo', ['template-repeat'])
 		itemList.push(obj);
 	}
 	$scope.allItems = itemList;
-	$scope.items = itemList.slice(0, $scope.numRows);
+	$scope.setRows(10);
+	
+	
+	
 }]);
