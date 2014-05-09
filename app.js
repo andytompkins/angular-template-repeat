@@ -1,4 +1,4 @@
-angular.module('template-repeat-demo', [])
+angular.module('template-repeat-demo', ['template-repeat'])
 .controller('DemoController', [ '$scope', function DemoController($scope) {
 	
 	$scope.items = [];
@@ -10,5 +10,5 @@ angular.module('template-repeat-demo', [])
 		};
 		$scope.items.push(obj);
 	}
-	
+		
 }]);
