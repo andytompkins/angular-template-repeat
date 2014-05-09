@@ -1,9 +1,13 @@
-angular.module('template-repeat', [])
-.directive('templateRepeat', [ '$templateCache', '$cacheFactory', '$compile',
-function($templateCache, $cacheFactory, $compile) {
+angular.module('template-repeat', ['angular-measure'])
+.directive('templateRepeat', [ '$templateCache', '$cacheFactory', '$compile', '$measure', '$rootScope',
+function($templateCache, $cacheFactory, $compile, $measure, $rootScope) {
 	
 	var cache = $cacheFactory('templateRepeat');
+	$measure.$start('cache clear');
 	cache.removeAll();
+	$measure.$stop('cache clear', function(ms) {
+		$rootScope.cacheClearTime = ms;
+	});
 
 	return {
 		priority: 1000,
@@ -36,6 +40,8 @@ function($templateCache, $cacheFactory, $compile) {
 					if (!collection || !collection.length) { 
 						return;
 					}
+					
+					$measure.$start('cache build');
 					for (var i = 0, upper = collection.length; i < upper; i++) {
 						var data = collection[i];
 						data.$index = i;
@@ -44,17 +50,26 @@ function($templateCache, $cacheFactory, $compile) {
 						cache.put(data[attr.cacheKey], rowElem);
 					}
 					setTimeout(function() { unregister(); }, 0);
+					$measure.$stop('cache build', function(ms) {
+						$rootScope.cacheBuildTime = ms;
+					});
 				});
 			}
 
 			scope.$on('$destroy', function() {
+				$measure.$start('cache clear');
 				cache.removeAll();
+				$measure.$stop('cache clear', function(ms) {
+					$rootScope.cacheClearTime = ms;
+				});
 			});
 
 			scope.$watchCollection(rhs, function(collection) {
 				if (!collection) { 
 					return; 
 				}
+				
+				$measure.$start('repeat loop');
 				while (element[0].hasChildNodes()) {
 					element[0].removeChild(element[0].lastChild);
 				}
@@ -70,6 +85,9 @@ function($templateCache, $cacheFactory, $compile) {
 					fragment.appendChild(rowElem[0]);
 				}
 				element.append(fragment);
+				$measure.$stop('repeat loop', function(ms) {
+					$rootScope.repeatLoopTime = ms;
+				});
 			});
 		}
 	};

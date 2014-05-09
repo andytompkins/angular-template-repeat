@@ -26,6 +26,12 @@
         </ul>
       </header>
 	  
+	  <section>
+		  <span>Cache clear time: {{cacheClearTime}} ms</span>
+		  <span>Cache build time: {{cacheBuildTime}} ms</span>
+		  <span>Repeat loop time: {{repeatLoopTime}} ms</span>
+	  </section>
+	  
       <section>
 		  <button data-ng-click="setRows(10)">10 rows</button>
 		  <button data-ng-click="setRows(100)">100 rows</button>
@@ -55,6 +61,7 @@
 	
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.min.js"></script>
+	<script type="text/javascript" src="angular-measure.js"></script>
 	<script type="text/javascript" src="angular-template-repeat.js"></script>
 	<script type="text/javascript" src="app.js"></script>
   </body>
