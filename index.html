@@ -27,9 +27,28 @@
       </header>
 	  
       <section>
-		  {{hw}}
+		  <table>
+			  <thead>
+			  	<tr>
+					<th>Col1</th>
+					<th>Col2</th>
+					<th>Col3</th>
+				</tr>
+			  </thead>
+			  <tbody data-template-repeat="item in items" data-template="itemRow.html" data-cache-rows="items" data-cache-key="id">
+				  
+			  </tbody>
+		  </table>
       </section>
     
+	<script type="text/ng-template" id="itemRow.html">
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+	</script>
+	
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.min.js"></script>
 	<script type="text/javascript" src="angular-template-repeat.js"></script>
 	<script type="text/javascript" src="app.js"></script>
