@@ -24,13 +24,16 @@
           <li><a href="https://github.com/andytompkins/angular-template-repeat/tarball/master">Download <strong>TAR Ball</strong></a></li>
           <li><a href="https://github.com/andytompkins/angular-template-repeat">View On <strong>GitHub</strong></a></li>
         </ul>
+		
+  	  	<div>
+  		  <span>Cache clear time: {{cacheClearTime}} ms</span><br>
+  		  <span>Cache build time: {{cacheBuildTime}} ms</span><br>
+  		  <span>Repeat loop time: {{repeatLoopTime}} ms</span><br>
+  	  	</div>
+	  
       </header>
 	  
-	  <section>
-		  <span>Cache clear time: {{cacheClearTime}} ms</span><br>
-		  <span>Cache build time: {{cacheBuildTime}} ms</span><br>
-		  <span>Repeat loop time: {{repeatLoopTime}} ms</span><br>
-	  </section>
+	  
 	  
       <section>
 		  <button data-ng-click="setRows(10)">10 rows</button>
